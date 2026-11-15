@@ -1,18 +1,34 @@
 {
   "versions": [
     {
+      "version": "2.2",
+      "kind": "ofx",
+      "date": "2026-11-15",
+      "title": "No centre seam, soft tails, Blend Softness",
+      "recommended": true,
+      "file": "versions/2.2/LightTrails-2.2-OFX-Windows.zip",
+      "where": "Color page > Effects > OpenFX > Light Trails",
+      "notes": [
+        "Fixes the hard vertical line down the middle of frame: Inward/Outward now decide by which side the light is on, with a soft crossfade, so trails cross the centre.",
+        "Trails fade out over their last third instead of stopping dead.",
+        "New Blend Softness slider: 0 straight add; higher rolls trail highlights off and sinks them into bright areas like screen. Instant to change.",
+        "GPU status line removed from the controls (still in the log)."
+      ]
+    },
+    {
       "version": "2.1",
       "kind": "ofx",
       "date": "2026-11-15",
       "title": "Static-light streaks (Inward), crash fixes",
-      "recommended": true,
+      "recommended": false,
       "file": "versions/2.1/LightTrails-2.1-OFX-Windows.zip",
       "where": "Color page > Effects > OpenFX > Light Trails",
       "notes": [
         "Direction: Inward (default), Outward, Up, Angle trail from still lamps using only the current frame. Follow Motion keeps the old behavior.",
         "Fixes the brighter-highlights-but-no-trails result on locked-off shots.",
         "Likely fix for the Decay crash: never fetches a frame it did not declare; the frame cache tolerates grain; Resolve's GPU buffers are size-checked; every render is logged first.",
-        "Length is now % of frame width; Rise and Angle added; Drift removed."
+        "Length is now % of frame width; Rise and Angle added; Drift removed.",
+        "Known problem: Inward/Outward cut trails with a hard vertical line at the centre of frame (fixed in 2.2)."
       ]
     },
     {

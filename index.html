@@ -78,28 +78,46 @@
     <li>Windows asks for administrator rights, because OpenFX plugins live in Program Files. If Resolve is open, the installer waits for you to close it.</li>
     <li>Whatever it replaces is backed up first to <code>%LOCALAPPDATA%\LightTrails\backup</code>.</li>
   </ol>
-  <p class="muted">Or from PowerShell, with the same menu:</p>
+  <p class="muted">Or from PowerShell (run as administrator, Resolve closed), with the same menu:</p>
   <div class="cmd"><pre id="c-menu">irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1 | iex</pre><button data-copy="c-menu">Copy</button></div>
 
   <h2 id="compare">Compare</h2>
   <p class="muted">The same synthetic night street through each mode: still warm lamps, a few distant lights, and one red neon sign that should not trail.</p>
   <div class="grid">
     <figure><img src="img/scene_source.jpg" alt="Source street scene with still lamps" loading="lazy"><figcaption><b>Source.</b> Lamps don't move.</figcaption></figure>
-    <figure><img src="img/v2.1_inward.jpg" alt="Light Trails 2.1, Inward" loading="lazy"><figcaption><b>2.1, Inward (default).</b> Side lamps trail toward the middle. The red neon is left alone.</figcaption></figure>
+    <figure><img src="img/v2.2_inward.jpg" alt="Light Trails 2.2, Inward" loading="lazy"><figcaption><b>2.2, Inward (default).</b> Side lamps trail toward the middle and cross it. The red neon is left alone.</figcaption></figure>
     <figure><img src="img/follow_motion_on_still_lamps.jpg" alt="Follow Motion on still lamps" loading="lazy"><figcaption><b>1.1 and 2.0 (Follow Motion).</b> Still lamps only get brighter, which is the bug you hit.</figcaption></figure>
     <figure><img src="img/v2.1_up.jpg" alt="Light Trails 2.1, Up" loading="lazy"><figcaption><b>2.1, Up.</b> Rising smoke.</figcaption></figure>
     <figure><img src="img/v2.1_trails_only.jpg" alt="Light Trails 2.1, trails only" loading="lazy"><figcaption><b>2.1, Blend: Trails Only.</b> The layer that gets added.</figcaption></figure>
-    <figure><img src="img/v2.1_show_mask.jpg" alt="Light Trails 2.1, Show Mask" loading="lazy"><figcaption><b>2.1, Show Mask.</b> Only the hot white points qualify.</figcaption></figure>
+    <figure><img src="img/v2.1_show_mask.jpg" alt="Light Trails, Show Mask" loading="lazy"><figcaption><b>Show Mask.</b> Only the hot white points qualify.</figcaption></figure>
+  </div>
+  <div class="grid">
+    <figure><img src="img/v2.2_center_seam_fixed.jpg" alt="Centre of frame, 2.1 above, 2.2 below" loading="lazy"><figcaption><b>Centre of frame, 2.1 (top) vs 2.2 (bottom).</b> 2.1 sliced every trail along the vertical centre line (red). 2.2 lets them cross.</figcaption></figure>
+    <figure><img src="img/v2.2_soft0.jpg" alt="Blend Softness 0" loading="lazy"><figcaption><b>Blend Softness 0.</b> Straight add: crisp, cores clip to white.</figcaption></figure>
+    <figure><img src="img/v2.2_soft1.jpg" alt="Blend Softness 1" loading="lazy"><figcaption><b>Blend Softness 1.</b> Highlights roll off, so the smoke texture survives in the cores.</figcaption></figure>
   </div>
 
   <h2 id="versions">Versions</h2>
 
   <div class="card rec">
-    <div class="top"><div><span class="ver">2.1</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Color page · NVIDIA GPU</span></div>
+    <div class="top"><div><span class="ver">2.2</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Color page · NVIDIA GPU</span></div>
+    <ul>
+      <li><b>No seam down the middle.</b> Inward and Outward decide by which side the light is on, with a soft crossfade, so trails cross the centre of frame instead of being cut by a hard vertical line.</li>
+      <li><b>Soft tails.</b> Trails fade out over their last third instead of stopping dead.</li>
+      <li><b>Blend Softness slider.</b> At 0 it's a straight add. Higher values roll the trail highlights off and sink them into bright areas like screen. It's instant to change.</li>
+      <li>The GPU line is gone from the controls; the device is still in the log.</li>
+    </ul>
+    <div class="row"><a class="btn ghost" href="versions/2.2/LightTrails-2.2-OFX-Windows.zip">Zip</a></div>
+    <div class="cmd"><pre id="c22">&amp; ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 2.2</pre><button data-copy="c22">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <div class="top"><div><span class="ver">2.1</span></div><span class="label">OpenFX · Color page · NVIDIA GPU</span></div>
     <ul>
       <li><b>Trails on still lamps.</b> Inward (default), Outward, Up or Angle need only the current frame. Follow Motion keeps the old behavior.</li>
       <li><b>Likely Decay-crash fix.</b> It never fetches a frame it didn't declare, its cache tolerates grain, Resolve's GPU buffers are size-checked, and every render is logged first.</li>
       <li>Length is now % of frame width. Rise and Angle are new; Drift is gone.</li>
+      <li><b>Known problem:</b> Inward and Outward cut trails with a hard vertical line at the centre of frame (fixed in 2.2).</li>
     </ul>
     <div class="row"><a class="btn ghost" href="versions/2.1/LightTrails-2.1-OFX-Windows.zip">Zip</a></div>
     <div class="cmd"><pre id="c21">&amp; ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 2.1</pre><button data-copy="c21">Copy</button></div>
@@ -142,7 +160,8 @@
     <table>
       <thead><tr><th>Version</th><th>Page</th><th>Renders on</th><th>Still lamps trail</th><th>Frames per tweak</th><th>Quality menu</th><th>Depth</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td><b>2.1</b></td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended</td></tr>
+        <tr><td><b>2.2</b></td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended</td></tr>
+        <tr><td>2.1</td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Centre seam</td></tr>
         <tr><td>2.0</td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="no">No</td><td>1 when cached, up to 13 after a reset</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Suspected crash</td></tr>
         <tr><td>1.1</td><td>Color, Edit</td><td>GPU, CPU fallback</td><td class="no">No</td><td>13</td><td class="no">No</td><td class="no">No</td><td>Very slow</td></tr>
         <tr><td>0.1</td><td>Fusion</td><td>GPU (Fusion)</td><td class="no">Only with Drift</td><td>13</td><td class="no">No</td><td class="no">No</td><td>Archive</td></tr>

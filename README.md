@@ -15,23 +15,28 @@ irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.p
 A specific version:
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 2.1
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 2.2
 ```
 
 ## Versions
 
 | Version | Kind | Still lamps trail | Frames read per tweak | Notes |
 |---|---|---|---|---|
-| **[2.1](versions/2.1/)** (recommended) | OpenFX, Color page, CUDA | Yes | 1 | Inward, Outward, Up or Angle streaks; likely Decay-crash fix; render log |
+| **[2.2](versions/2.2/)** (recommended) | OpenFX, Color page, CUDA | Yes | 1 | No centre seam, soft tails, Blend Softness slider |
+| [2.1](versions/2.1/) | OpenFX, Color page, CUDA | Yes | 1 | Inward, Outward, Up or Angle streaks; likely Decay-crash fix; hard line at centre of frame |
 | [2.0](versions/2.0/) | OpenFX, Color page, CUDA | No | 1 cached, up to 13 after a reset | Quality menu, depth, whites-only key; suspected crash |
 | [1.1](versions/1.1/) | OpenFX, Color page, CUDA + CPU | No | 13 | Very slow; untick Use GPU for 1.0 behavior |
 | [0.1](versions/0.1/) | Fuse, Fusion page | Only with Drift | 13 | First version; zip also holds the original DCTL |
 
 1.0 (CPU only) isn't archived: its build was overwritten when 1.1 was compiled. 1.1 with Use GPU off runs the same CPU path.
 
-| Source (lamps don't move) | 2.1 Inward | 1.1 and 2.0 (Follow Motion) |
+| Source (lamps don't move) | 2.2 Inward | 1.1 and 2.0 (Follow Motion) |
 |---|---|---|
-| ![](img/scene_source.jpg) | ![](img/v2.1_inward.jpg) | ![](img/follow_motion_on_still_lamps.jpg) |
+| ![](img/scene_source.jpg) | ![](img/v2.2_inward.jpg) | ![](img/follow_motion_on_still_lamps.jpg) |
+
+Centre of frame, 2.1 (top) vs 2.2 (bottom): 2.1 sliced trails along the vertical centre line.
+
+![](img/v2.2_center_seam_fixed.jpg)
 
 ## Files
 
