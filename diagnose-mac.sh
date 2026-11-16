@@ -18,13 +18,17 @@ echo "== file type"
 file "$BIN" 2>&1
 echo "== code signature"
 codesign -dvv "$BIN" 2>&1 | head -12
-codesign --verify --verbose=2 "$BIN" 2>&1
+codesign --verify --strict --verbose=2 "$B" 2>&1
 echo "== Resolve entitlements (library validation)"
-codesign -d --entitlements - "/Applications/DaVinci Resolve/DaVinci Resolve.app" 2>/dev/null | grep -i -A1 "library-validation" | head -4
+codesign -d --entitlements - "/Applications/DaVinci Resolve/DaVinci Resolve.app" 2>&1 | grep -i -E "library|runtime|allow" | head -8
+codesign -dv "/Applications/DaVinci Resolve/DaVinci Resolve.app" 2>&1 | grep -i -E "flags|TeamIdentifier" | head -3
 echo "== Light Trails log"
 tail -n 20 "$HOME/Library/Logs/LightTrails.log" 2>&1
 echo "== Resolve log lines about the plugin"
-grep -i -h -B2 -A6 "lighttrails\|light trails\|OFX\b.*fail\|failed to load" "$RL"/logs/*.txt 2>/dev/null | tail -n 60
+for L in "$RL"/logs/*.txt "/Library/Application Support/Blackmagic Design/DaVinci Resolve/logs"/*.txt; do
+  [ -f "$L" ] && grep -i -h -B2 -A6 "lighttrails\|light trails" "$L" 2>/dev/null
+done | tail -n 60
+ls -t "$RL"/logs/ "/Library/Application Support/Blackmagic Design/DaVinci Resolve/logs/" 2>/dev/null | head -8
 echo "== Resolve OFX cache entry"
 grep -i -A8 "lighttrails" "$RL"/*.xml 2>/dev/null | head -20
 echo "== recent Resolve crash reports"

@@ -10,6 +10,7 @@ BASE="https://raw.githubusercontent.com/MohamedMabrook/light-trails/main"
 DEST="${LT_DEST:-/Library/OFX/Plugins}"   # LT_DEST: test override
 BUNDLE="$DEST/LightTrails.ofx.bundle"
 BACKUP="$HOME/Library/Application Support/LightTrails/backup"
+RESOLVE_PREFS="$HOME/Library/Application Support/Blackmagic Design/DaVinci Resolve"
 WANT="${1:-latest}"
 
 say()  { printf '%s\n' "$*"; }
@@ -19,7 +20,8 @@ fail() { printf 'Install failed: %s\n' "$*" >&2; exit 1; }
 [ "$(uname -m)" = arm64 ]  || fail "Light Trails for Mac needs an Apple Silicon Mac (M1 or newer)."
 
 installed="nothing"
-if [ -f "$BUNDLE/Contents/VERSION.txt" ]; then installed="$(cat "$BUNDLE/Contents/VERSION.txt")"
+if [ -f "$BUNDLE/Contents/Resources/VERSION.txt" ]; then installed="$(cat "$BUNDLE/Contents/Resources/VERSION.txt")"
+elif [ -f "$BUNDLE/Contents/VERSION.txt" ]; then installed="$(cat "$BUNDLE/Contents/VERSION.txt")"
 elif [ -d "$BUNDLE" ]; then installed="unknown version"; fi
 say ""
 say "Light Trails installer for Mac"
@@ -43,6 +45,17 @@ wait_for_resolve() {
   done
 }
 
+# Resolve remembers a plugin that failed to load and does not retry it. Moving its OFX cache
+# aside (backed up) makes it rescan all plugins on the next launch.
+reset_resolve_cache() {
+  local found=0 d="$BACKUP/resolve-ofx-cache-$(date +%Y%m%d-%H%M%S)"
+  for f in "$RESOLVE_PREFS"/OFXPluginCache*.xml; do
+    [ -f "$f" ] || continue
+    mkdir -p "$d"; mv "$f" "$d/"; found=1
+  done
+  [ "$found" = 1 ] && say "Reset Resolve's plugin cache (backup in $d)" || true
+}
+
 backup_existing() {
   if [ -d "$BUNDLE" ]; then
     local d="$BACKUP/$(date +%Y%m%d-%H%M%S)"
@@ -57,6 +70,7 @@ if [ "$WANT" = uninstall ]; then
   backup_existing
   say "Removing Light Trails (macOS will ask for your password)..."
   sudo rm -rf "$BUNDLE"
+  reset_resolve_cache
   say "Removed."
   exit 0
 fi
@@ -83,8 +97,17 @@ say "Copying into $DEST (macOS will ask for your password)..."
 sudo mkdir -p "$DEST"
 sudo rm -rf "$BUNDLE"
 sudo cp -R "$SRC" "$BUNDLE"
-printf '%s\n' "$VER" | sudo tee "$BUNDLE/Contents/VERSION.txt" > /dev/null
-sudo xattr -dr com.apple.quarantine "$BUNDLE" 2>/dev/null || true
+sudo rm -f "$BUNDLE/Contents/VERSION.txt"
+sudo mkdir -p "$BUNDLE/Contents/Resources"
+printf '%s\n' "$VER" | sudo tee "$BUNDLE/Contents/Resources/VERSION.txt" > /dev/null
+sudo xattr -cr "$BUNDLE" 2>/dev/null || true
+# Sign the whole bundle on this Mac (ad-hoc, resources sealed). The build machine can only give
+# the binary a linker signature, which macOS rejects once the binary sits inside a bundle.
+say "Signing the plugin on this Mac..."
+sudo codesign --force --deep --sign - "$BUNDLE" || fail "codesign could not sign the plugin."
+codesign --verify --strict --verbose=1 "$BUNDLE" 2>&1 | sed 's/^/  /' || true
+codesign --verify --strict "$BUNDLE" 2>/dev/null || fail "the plugin's signature does not verify (see above)."
+reset_resolve_cache
 say ""
 say "Installed to $BUNDLE"
 say "Open Resolve: Color page > Effects > OpenFX > Light Trails."
