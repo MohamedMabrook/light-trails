@@ -31,6 +31,20 @@ done | tail -n 60
 ls -t "$RL"/logs/ "/Library/Application Support/Blackmagic Design/DaVinci Resolve/logs/" 2>/dev/null | head -8
 echo "== Resolve OFX cache entry"
 grep -i -A8 "lighttrails" "$RL"/*.xml 2>/dev/null | head -20
+echo "== load test (loads the plugin outside Resolve and renders one tiny frame on the GPU)"
+T="$(mktemp -d)"
+if curl -fsSL -o "$T/lt-loadtest" "https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/tools/mac/lt-loadtest"; then
+  chmod +x "$T/lt-loadtest"
+  mkdir -p "$T/plugins" && cp -R "$B" "$T/plugins/"
+  : > "$HOME/Library/Logs/LightTrails.log.test" 2>/dev/null || true
+  ( cd "$T" && LT_ONLY_ENV_PATH=1 OFX_PLUGIN_PATH="$T/plugins" ./lt-loadtest "$T/none" 64 64 1 0 "$T/out.f32" 2>&1 | grep -v -e "host: served" -e "host: missing" | tail -n 15 )
+  echo "exit status: $?"
+  echo "-- plugin log after the load test:"
+  tail -n 8 "$HOME/Library/Logs/LightTrails.log" 2>&1
+else
+  echo "could not download the load test"
+fi
+rm -rf "$T"
 echo "== recent Resolve crash reports"
 ls -t "$HOME/Library/Logs/DiagnosticReports/" 2>/dev/null | grep -i resolve | head -3
 } 2>&1 | tee /tmp/lighttrails-report.txt
