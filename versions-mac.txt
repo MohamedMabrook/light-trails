@@ -1,0 +1,2 @@
+# version|file|title|recommended   (read by install-mac.sh)
+2.2-mac|versions/2.2-mac/LightTrails-2.2-OFX-macOS.zip|Light Trails 2.2 for Apple Silicon (lighter presets, Metal)|yes

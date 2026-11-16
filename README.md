@@ -18,11 +18,20 @@ A specific version:
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 2.2
 ```
 
+### Mac (Apple Silicon, macOS 13+)
+
+In Terminal, with Resolve closed:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install-mac.sh | bash
+```
+
 ## Versions
 
 | Version | Kind | Still lamps trail | Frames read per tweak | Notes |
 |---|---|---|---|---|
-| **[2.2](versions/2.2/)** (recommended) | OpenFX, Color page, CUDA | Yes | 1 | No centre seam, soft tails, Blend Softness slider |
+| **[2.2 Mac](versions/2.2-mac/)** | OpenFX, Color page, Metal (Apple Silicon) | Yes | 1 | Same as 2.2, with lighter presets, unified memory and cheaper smoke; about 1.8× lighter at Medium |
+| **[2.2](versions/2.2/)** (recommended, Windows) | OpenFX, Color page, CUDA | Yes | 1 | No centre seam, soft tails, Blend Softness slider |
 | [2.1](versions/2.1/) | OpenFX, Color page, CUDA | Yes | 1 | Inward, Outward, Up or Angle streaks; likely Decay-crash fix; hard line at centre of frame |
 | [2.0](versions/2.0/) | OpenFX, Color page, CUDA | No | 1 cached, up to 13 after a reset | Quality menu, depth, whites-only key; suspected crash |
 | [1.1](versions/1.1/) | OpenFX, Color page, CUDA + CPU | No | 13 | Very slow; untick Use GPU for 1.0 behavior |
@@ -42,6 +51,7 @@ Centre of frame, 2.1 (top) vs 2.2 (bottom): 2.1 sliced trails along the vertical
 
 - `index.html`: the page (GitHub Pages serves it from the repo root).
 - `versions.json`: the version list the installer reads.
-- `install.ps1`, `Install-LightTrails.bat`: the installer.
+- `install.ps1`, `Install-LightTrails.bat`: the Windows installer.
+- `install-mac.sh`, `versions-mac.txt`: the Mac installer and its version list.
 - `versions/<n>/`: each version's package, including full source.
 - `img/`: comparison renders of a synthetic test scene.

@@ -81,6 +81,10 @@
   <p class="muted">Or from PowerShell (run as administrator, Resolve closed), with the same menu:</p>
   <div class="cmd"><pre id="c-menu">irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1 | iex</pre><button data-copy="c-menu">Copy</button></div>
 
+  <h3 style="margin-top:36px">Mac (Apple Silicon)</h3>
+  <p class="muted">In Terminal, with Resolve closed. It asks for your Mac password, backs up the old copy and clears the download flag so Resolve can load it.</p>
+  <div class="cmd"><pre id="c-mac">curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install-mac.sh | bash</pre><button data-copy="c-mac">Copy</button></div>
+
   <h2 id="compare">Compare</h2>
   <p class="muted">The same synthetic night street through each mode: still warm lamps, a few distant lights, and one red neon sign that should not trail.</p>
   <div class="grid">
@@ -98,6 +102,18 @@
   </div>
 
   <h2 id="versions">Versions</h2>
+
+  <div class="card rec">
+    <div class="top"><div><span class="ver">2.2 Mac</span><span class="tag">New</span></div><span class="label">OpenFX · Color page · Apple Silicon (Metal)</span></div>
+    <ul>
+      <li><b>Same look and controls as 2.2,</b> rebuilt for Apple Silicon with Metal (macOS 13+).</li>
+      <li><b>Lighter by design.</b> Unified memory means frames are never copied between memories. Low, Medium and High process fewer pixels (Medium 40% resolution, 24 steps). Smoke is computed at 5 points per trail and blended, and empty samples are skipped. In testing, Medium is about 1.8× and Final about 1.9× lighter than the same code without these changes.</li>
+      <li>If Metal can't start, it falls back to the CPU and says why in <code>~/Library/Logs/LightTrails.log</code>.</li>
+    </ul>
+    <figure><img src="img/mac_vs_windows.jpg" alt="Windows 2.2 Medium vs Mac Medium, Final, Low" loading="lazy"><figcaption>From the top: Windows 2.2 Medium, then Mac Medium, Mac Final and Mac Low.</figcaption></figure>
+    <div class="row"><a class="btn ghost" href="versions/2.2-mac/LightTrails-2.2-OFX-macOS.zip">Zip</a></div>
+    <div class="cmd"><pre id="c22m">curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install-mac.sh | bash -s -- 2.2-mac</pre><button data-copy="c22m">Copy</button></div>
+  </div>
 
   <div class="card rec">
     <div class="top"><div><span class="ver">2.2</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Color page · NVIDIA GPU</span></div>
@@ -160,6 +176,7 @@
     <table>
       <thead><tr><th>Version</th><th>Page</th><th>Renders on</th><th>Still lamps trail</th><th>Frames per tweak</th><th>Quality menu</th><th>Depth</th><th>Status</th></tr></thead>
       <tbody>
+        <tr><td><b>2.2 Mac</b></td><td>Color, Edit</td><td>Apple GPU (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes, lighter presets</td><td class="yes">Yes</td><td>New, Mac</td></tr>
         <tr><td><b>2.2</b></td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended</td></tr>
         <tr><td>2.1</td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Centre seam</td></tr>
         <tr><td>2.0</td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="no">No</td><td>1 when cached, up to 13 after a reset</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Suspected crash</td></tr>
@@ -171,13 +188,13 @@
 
   <h2 id="help">If something goes wrong</h2>
   <ul>
-    <li><b>The plugin log</b> is <code>%TEMP%\LightTrails.log</code>. In 2.1, every render writes a line before it starts, so after a crash the last line shows what was running. Send that file.</li>
+    <li><b>The plugin log</b> is <code>%TEMP%\LightTrails.log</code> on Windows and <code>~/Library/Logs/LightTrails.log</code> on Mac. In 2.1, every render writes a line before it starts, so after a crash the last line shows what was running. Send that file.</li>
     <li><b>Not in the OpenFX list:</b> run the installer again and check that it prints <i>Installed to …\OFX\Plugins\LightTrails.ofx.bundle</i>, then restart Resolve.</li>
     <li><b>Go back to a version:</b> run the installer and pick it. Only one OpenFX version is installed at a time.</li>
     <li><b>Remove it:</b> run the installer and press <code>U</code>.</li>
   </ul>
 </main>
-<footer>Light Trails · OpenFX plugin for DaVinci Resolve Studio on Windows · NVIDIA GPU required for 2.x</footer>
+<footer>Light Trails · OpenFX plugin for DaVinci Resolve · Windows (NVIDIA GPU) and Mac (Apple Silicon)</footer>
 <script>
   document.querySelectorAll("button[data-copy]").forEach(function (b) {
     b.addEventListener("click", function () {
