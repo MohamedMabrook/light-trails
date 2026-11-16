@@ -15,7 +15,7 @@ irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.p
 A specific version:
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 2.2
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 2.3
 ```
 
 ### Mac (Apple Silicon, macOS 13+)
@@ -30,8 +30,9 @@ curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/in
 
 | Version | Kind | Still lamps trail | Frames read per tweak | Notes |
 |---|---|---|---|---|
-| **[2.2 Mac](versions/2.2-mac/)** | OpenFX, Color page, Metal (Apple Silicon) | Yes | 1 | Same as 2.2, with lighter presets, unified memory and cheaper smoke; about 1.8× lighter at Medium |
-| **[2.2](versions/2.2/)** (recommended, Windows) | OpenFX, Color page, CUDA | Yes | 1 | No centre seam, soft tails, Blend Softness slider |
+| **[2.3](versions/2.3/)** + **[2.3 Mac](versions/2.3-mac/)** (recommended) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | Color and Tail Color pickers; Mac Metal fixes |
+| [2.2 Mac](versions/2.2-mac/) | OpenFX, Color page, Metal (Apple Silicon) | Yes | 1 | Same as 2.2, with lighter presets, unified memory and cheaper smoke; about 1.8× lighter at Medium |
+| [2.2](versions/2.2/) (Windows) | OpenFX, Color page, CUDA | Yes | 1 | No centre seam, soft tails, Blend Softness slider |
 | [2.1](versions/2.1/) | OpenFX, Color page, CUDA | Yes | 1 | Inward, Outward, Up or Angle streaks; likely Decay-crash fix; hard line at centre of frame |
 | [2.0](versions/2.0/) | OpenFX, Color page, CUDA | No | 1 cached, up to 13 after a reset | Quality menu, depth, whites-only key; suspected crash |
 | [1.1](versions/1.1/) | OpenFX, Color page, CUDA + CPU | No | 13 | Very slow; untick Use GPU for 1.0 behavior |
@@ -42,6 +43,10 @@ curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/in
 | Source (lamps don't move) | 2.2 Inward | 1.1 and 2.0 (Follow Motion) |
 |---|---|---|
 | ![](img/scene_source.jpg) | ![](img/v2.2_inward.jpg) | ![](img/follow_motion_on_still_lamps.jpg) |
+
+Trail colour in 2.3, from the top: default white, then Tail Color blue, Color amber with Tail Color teal, and the Mac build:
+
+![](img/v2.3_colors.jpg)
 
 Centre of frame, 2.1 (top) vs 2.2 (bottom): 2.1 sliced trails along the vertical centre line.
 

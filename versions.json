@@ -1,11 +1,25 @@
 {
   "versions": [
     {
+      "version": "2.3",
+      "kind": "ofx",
+      "date": "2026-11-16",
+      "title": "Trail colour: Color and Tail Color",
+      "recommended": true,
+      "file": "versions/2.3/LightTrails-2.3-OFX-Windows.zip",
+      "where": "Color page > Effects > OpenFX > Light Trails",
+      "notes": [
+        "New Color and Tail Color pickers (Look group): the trail blends from Color at the light to Tail Color at its smoky end.",
+        "Default white renders exactly like 2.2.",
+        "Everything else as 2.2 (no centre seam, soft tails, Blend Softness)."
+      ]
+    },
+    {
       "version": "2.2",
       "kind": "ofx",
       "date": "2026-11-15",
       "title": "No centre seam, soft tails, Blend Softness",
-      "recommended": true,
+      "recommended": false,
       "file": "versions/2.2/LightTrails-2.2-OFX-Windows.zip",
       "where": "Color page > Effects > OpenFX > Light Trails",
       "notes": [

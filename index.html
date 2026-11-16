@@ -104,7 +104,20 @@
   <h2 id="versions">Versions</h2>
 
   <div class="card rec">
-    <div class="top"><div><span class="ver">2.2 Mac</span><span class="tag">New</span></div><span class="label">OpenFX · Color page · Apple Silicon (Metal)</span></div>
+    <div class="top"><div><span class="ver">2.3</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Windows (NVIDIA) and Mac (Apple Silicon)</span></div>
+    <ul>
+      <li><b>Trail colour.</b> New <b>Color</b> and <b>Tail Color</b> pickers in the Look group. The trail blends from Color at the light to Tail Color at its wavy, smoky end, so a warm core can fade into cold blue smoke.</li>
+      <li>Both default to white, so existing grades render exactly as in 2.2. Changing a colour only redraws the trails; no frames are refetched.</li>
+      <li><b>Mac:</b> fixes the Metal compile errors your log showed, so the effect runs on the GPU instead of the CPU, and the plugin now stays loaded once Resolve has loaded it.</li>
+    </ul>
+    <figure><img src="img/v2.3_colors.jpg" alt="Trail colour examples" loading="lazy"><figcaption>From the top: default white, then Tail Color blue, Color amber with Tail Color teal, and the Mac build with Tail Color blue.</figcaption></figure>
+    <div class="row"><a class="btn ghost" href="versions/2.3/LightTrails-2.3-OFX-Windows.zip">Windows zip</a><a class="btn ghost" href="versions/2.3-mac/LightTrails-2.3-OFX-macOS.zip">Mac zip</a></div>
+    <div class="cmd"><pre id="c23">&amp; ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 2.3</pre><button data-copy="c23">Copy</button></div>
+    <div class="cmd" style="margin-top:8px"><pre id="c23m">curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install-mac.sh | bash -s -- 2.3-mac</pre><button data-copy="c23m">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <div class="top"><div><span class="ver">2.2 Mac</span></div><span class="label">OpenFX · Color page · Apple Silicon (Metal)</span></div>
     <ul>
       <li><b>Same look and controls as 2.2,</b> rebuilt for Apple Silicon with Metal (macOS 13+).</li>
       <li><b>Lighter by design.</b> Unified memory means frames are never copied between memories. Low, Medium and High process fewer pixels (Medium 40% resolution, 24 steps). Smoke is computed at 5 points per trail and blended, and empty samples are skipped. In testing, Medium is about 1.8× and Final about 1.9× lighter than the same code without these changes.</li>
@@ -115,8 +128,8 @@
     <div class="cmd"><pre id="c22m">curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install-mac.sh | bash -s -- 2.2-mac</pre><button data-copy="c22m">Copy</button></div>
   </div>
 
-  <div class="card rec">
-    <div class="top"><div><span class="ver">2.2</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Color page · NVIDIA GPU</span></div>
+  <div class="card">
+    <div class="top"><div><span class="ver">2.2</span></div><span class="label">OpenFX · Color page · NVIDIA GPU</span></div>
     <ul>
       <li><b>No seam down the middle.</b> Inward and Outward decide by which side the light is on, with a soft crossfade, so trails cross the centre of frame instead of being cut by a hard vertical line.</li>
       <li><b>Soft tails.</b> Trails fade out over their last third instead of stopping dead.</li>
@@ -176,8 +189,9 @@
     <table>
       <thead><tr><th>Version</th><th>Page</th><th>Renders on</th><th>Still lamps trail</th><th>Frames per tweak</th><th>Quality menu</th><th>Depth</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td><b>2.2 Mac</b></td><td>Color, Edit</td><td>Apple GPU (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes, lighter presets</td><td class="yes">Yes</td><td>New, Mac</td></tr>
-        <tr><td><b>2.2</b></td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended</td></tr>
+        <tr><td><b>2.3</b></td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended, with trail colour</td></tr>
+        <tr><td>2.2 Mac</td><td>Color, Edit</td><td>Apple GPU (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes, lighter presets</td><td class="yes">Yes</td><td>Superseded by 2.3</td></tr>
+        <tr><td><b>2.2</b></td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Superseded by 2.3</td></tr>
         <tr><td>2.1</td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Centre seam</td></tr>
         <tr><td>2.0</td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="no">No</td><td>1 when cached, up to 13 after a reset</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Suspected crash</td></tr>
         <tr><td>1.1</td><td>Color, Edit</td><td>GPU, CPU fallback</td><td class="no">No</td><td>13</td><td class="no">No</td><td class="no">No</td><td>Very slow</td></tr>
