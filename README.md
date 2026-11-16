@@ -15,7 +15,7 @@ irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.p
 A specific version:
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 3.0
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 3.1
 ```
 
 ### Mac (Apple Silicon, macOS 13+)
@@ -30,7 +30,8 @@ curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/in
 
 | Version | Kind | Still lamps trail | Frames read per tweak | Notes |
 |---|---|---|---|---|
-| **[3.0](versions/3.0/)** + **[3.0 Mac](versions/3.0-mac/)** (recommended) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | Looks menu; Character: Variation, Flicker, Dissolve, Fringe (all off = 2.3) |
+| **[3.1](versions/3.1/)** + **[3.1 Mac](versions/3.1-mac/)** (recommended) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | Toward Center / Toward Point, Seed + Randomize; Dissolve and Fringe removed |
+| [3.0](versions/3.0/) + [3.0 Mac](versions/3.0-mac/) (backup, branch `backup-v3.0`) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | Looks menu; Character: Variation, Flicker, Dissolve, Fringe (all off = 2.3) |
 | [2.3](versions/2.3/) + [2.3 Mac](versions/2.3-mac/) (backup, branch `backup-v2.3`) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | Color and Tail Color pickers; Mac Metal fixes |
 | [2.2 Mac](versions/2.2-mac/) | OpenFX, Color page, Metal (Apple Silicon) | Yes | 1 | Same as 2.2, with lighter presets, unified memory and cheaper smoke; about 1.8× lighter at Medium |
 | [2.2](versions/2.2/) (Windows) | OpenFX, Color page, CUDA | Yes | 1 | No centre seam, soft tails, Blend Softness slider |
@@ -44,6 +45,10 @@ curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/in
 | Source (lamps don't move) | 2.2 Inward | 1.1 and 2.0 (Follow Motion) |
 |---|---|---|
 | ![](img/scene_source.jpg) | ![](img/v2.2_inward.jpg) | ![](img/follow_motion_on_still_lamps.jpg) |
+
+3.1 Toward Center, Toward Point, and seeds 0 / 1 / 42:
+
+![](img/v3.1_directions_seed.jpg)
 
 3.0 Looks (Analog Horror, Sodium Haze, Neon Rain, Dream, Subtle):
 

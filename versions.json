@@ -1,11 +1,25 @@
 {
   "versions": [
     {
+      "version": "3.1",
+      "kind": "ofx",
+      "date": "2026-11-17",
+      "title": "Toward Center / Toward Point, Seed + Randomize",
+      "recommended": true,
+      "file": "versions/3.1/LightTrails-3.1-OFX-Windows.zip",
+      "where": "Color page > Effects > OpenFX > Light Trails",
+      "notes": [
+        "New directions: Toward Center and Toward Point (drag the Point crosshair).",
+        "Seed + Randomize reshuffle waves, smoke, flicker and variation; seed 0 = 3.0.",
+        "Color / Tail Color moved to the Trail group. Dissolve, Ember Size and Fringe removed."
+      ]
+    },
+    {
       "version": "3.0",
       "kind": "ofx",
       "date": "2026-11-16",
       "title": "Looks + Character: Variation, Flicker, Dissolve, Fringe",
-      "recommended": true,
+      "recommended": false,
       "file": "versions/3.0/LightTrails-3.0-OFX-Windows.zip",
       "where": "Color page > Effects > OpenFX > Light Trails",
       "notes": [
