@@ -104,7 +104,21 @@
   <h2 id="versions">Versions</h2>
 
   <div class="card rec">
-    <div class="top"><div><span class="ver">2.3</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Windows (NVIDIA) and Mac (Apple Silicon)</span></div>
+    <div class="top"><div><span class="ver">3.0</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Windows (NVIDIA) and Mac (Apple Silicon)</span></div>
+    <ul>
+      <li><b>Looks.</b> One-click starting points: Analog Horror, Sodium Haze, Neon Rain, Dream and Subtle. Each sets the controls, and everything stays editable after.</li>
+      <li><b>Character group.</b> <b>Variation</b> gives each trail its own phase and length. <b>Flicker</b> makes lamps and trails breathe and stutter like failing sodium lights. <b>Dissolve</b> breaks the tail into embers. <b>Fringe</b> adds VHS-style colour bleed.</li>
+      <li><b>Light.</b> Every new control defaults to off, so 3.0 opens exactly like 2.3. All four together add about 3 to 11% at Medium.</li>
+    </ul>
+    <figure><img src="img/v3.0_looks.jpg" alt="The five Looks" loading="lazy"><figcaption>The five Looks, from the top: Analog Horror, Sodium Haze, Neon Rain, Dream and Subtle.</figcaption></figure>
+    <figure style="margin-top:14px"><img src="img/v3.0_character.jpg" alt="Character controls" loading="lazy"><figcaption>Character controls, from the top: defaults (identical to 2.3), Variation, Dissolve, Fringe, all four together, and the Mac build with the same settings.</figcaption></figure>
+    <div class="row"><a class="btn ghost" href="versions/3.0/LightTrails-3.0-OFX-Windows.zip">Windows zip</a><a class="btn ghost" href="versions/3.0-mac/LightTrails-3.0-OFX-macOS.zip">Mac zip</a></div>
+    <div class="cmd"><pre id="c30">&amp; ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 3.0</pre><button data-copy="c30">Copy</button></div>
+    <div class="cmd" style="margin-top:8px"><pre id="c30m">curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install-mac.sh | bash -s -- 3.0-mac</pre><button data-copy="c30m">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <div class="top"><div><span class="ver">2.3</span><span class="tag">Backup</span></div><span class="label">OpenFX · Windows (NVIDIA) and Mac (Apple Silicon)</span></div>
     <ul>
       <li><b>Trail colour.</b> New <b>Color</b> and <b>Tail Color</b> pickers in the Look group. The trail blends from Color at the light to Tail Color at its wavy, smoky end, so a warm core can fade into cold blue smoke.</li>
       <li>Both default to white, so existing grades render exactly as in 2.2. Changing a colour only redraws the trails; no frames are refetched.</li>
@@ -189,7 +203,8 @@
     <table>
       <thead><tr><th>Version</th><th>Page</th><th>Renders on</th><th>Still lamps trail</th><th>Frames per tweak</th><th>Quality menu</th><th>Depth</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td><b>2.3</b></td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended, with trail colour</td></tr>
+        <tr><td><b>3.0</b></td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended: Looks + Character</td></tr>
+        <tr><td>2.3</td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Backup (branch backup-v2.3)</td></tr>
         <tr><td>2.2 Mac</td><td>Color, Edit</td><td>Apple GPU (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes, lighter presets</td><td class="yes">Yes</td><td>Superseded by 2.3</td></tr>
         <tr><td><b>2.2</b></td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Superseded by 2.3</td></tr>
         <tr><td>2.1</td><td>Color, Edit</td><td>GPU (CUDA)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Centre seam</td></tr>

@@ -1,11 +1,25 @@
 {
   "versions": [
     {
+      "version": "3.0",
+      "kind": "ofx",
+      "date": "2026-11-16",
+      "title": "Looks + Character: Variation, Flicker, Dissolve, Fringe",
+      "recommended": true,
+      "file": "versions/3.0/LightTrails-3.0-OFX-Windows.zip",
+      "where": "Color page > Effects > OpenFX > Light Trails",
+      "notes": [
+        "Looks menu: Analog Horror, Sodium Haze, Neon Rain, Dream, Subtle (sets the controls; everything stays editable).",
+        "Character group: Variation, Flicker (+speed), Dissolve (+ember size), Fringe.",
+        "All new controls default to off: renders exactly like 2.3. All on adds about 3-11% at Medium."
+      ]
+    },
+    {
       "version": "2.3",
       "kind": "ofx",
       "date": "2026-11-16",
       "title": "Trail colour: Color and Tail Color",
-      "recommended": true,
+      "recommended": false,
       "file": "versions/2.3/LightTrails-2.3-OFX-Windows.zip",
       "where": "Color page > Effects > OpenFX > Light Trails",
       "notes": [
