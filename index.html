@@ -104,7 +104,21 @@
   <h2 id="versions">Versions</h2>
 
   <div class="card rec">
-    <div class="top"><div><span class="ver">3.2</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Windows (NVIDIA) and Mac (Apple Silicon)</span></div>
+    <div class="top"><div><span class="ver">3.3</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Windows (NVIDIA) and Mac (Apple Silicon)</span></div>
+    <ul>
+      <li><b>Density</b> splits each trail into parallel wisps with their own waves, up to six intertwined strands.</li>
+      <li><b>Blur</b> softens the trail layer only. <b>Focus</b> is depth of field for the trails: sharp near the reticle, soft further away, in any Direction.</li>
+      <li><b>Show Reticle</b> draws the orange reticle onto the footage, so it shows in every viewer. It's part of the image while it's on, so turn it off before you render.</li>
+      <li>With the new controls at 0, renders are identical to 3.2.</li>
+    </ul>
+    <figure><img src="img/v3.3_features.jpg" alt="3.3 features on a test scene" loading="lazy"><figcaption>Test scene. Top: default and Density 1. Middle: Blur 25 and Focus 1 with the reticle at left. Bottom: the reticle drawn on the footage for Toward Point and Angle.</figcaption></figure>
+    <div class="row"><a class="btn ghost" href="versions/3.3/LightTrails-3.3-OFX-Windows.zip">Windows zip</a><a class="btn ghost" href="versions/3.3-mac/LightTrails-3.3-OFX-macOS.zip">Mac zip</a></div>
+    <div class="cmd"><pre id="c33">&amp; ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 3.3</pre><button data-copy="c33">Copy</button></div>
+    <div class="cmd" style="margin-top:8px"><pre id="c33m">curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install-mac.sh | bash -s -- 3.3-mac</pre><button data-copy="c33m">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <div class="top"><div><span class="ver">3.2</span><span class="tag">Backup</span></div><span class="label">OpenFX · Windows (NVIDIA) and Mac (Apple Silicon)</span></div>
     <ul>
       <li><b>On-screen reticle for Direction.</b> With <b>Toward Point</b>, drag the orange reticle anywhere in the viewer and every trail heads there. With <b>Angle</b>, drag it around a ring at the frame centre to aim the trails. The Angle slider follows it, and moving the slider moves the reticle.</li>
       <li>The reticle is hidden for the other directions, and clicks away from it are left to Resolve.</li>
@@ -229,7 +243,8 @@
     <table>
       <thead><tr><th>Version</th><th>Page</th><th>Renders on</th><th>Still lamps trail</th><th>Frames per tweak</th><th>Quality menu</th><th>Depth</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td><b>3.2</b></td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (all but Follow Motion)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended: on-screen reticle</td></tr>
+        <tr><td><b>3.3</b></td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (all but Follow Motion)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended: Density, Blur, Focus, reticle on footage</td></tr>
+        <tr><td>3.2</td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (all but Follow Motion)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Backup (branch backup-v3.2)</td></tr>
         <tr><td>3.1</td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (all but Follow Motion)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Backup (branch backup-v3.1)</td></tr>
         <tr><td>3.0</td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Backup (branch backup-v3.0)</td></tr>
         <tr><td>2.3</td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Backup (branch backup-v2.3)</td></tr>

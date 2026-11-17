@@ -1,5 +1,6 @@
 # version|file|title|recommended   (read by install-mac.sh)
-3.2-mac|versions/3.2-mac/LightTrails-3.2-OFX-macOS.zip|Light Trails 3.2 for Apple Silicon (on-screen reticle)|yes
+3.3-mac|versions/3.3-mac/LightTrails-3.3-OFX-macOS.zip|Light Trails 3.3 for Apple Silicon (Density, Blur, Focus, reticle on footage)|yes
+3.2-mac|versions/3.2-mac/LightTrails-3.2-OFX-macOS.zip|Light Trails 3.2 for Apple Silicon (on-screen reticle)|no
 3.1-mac|versions/3.1-mac/LightTrails-3.1-OFX-macOS.zip|Light Trails 3.1 for Apple Silicon (Toward Point, Seed)|no
 3.0-mac|versions/3.0-mac/LightTrails-3.0-OFX-macOS.zip|Light Trails 3.0 for Apple Silicon (Looks, Character controls)|no
 2.3-mac|versions/2.3-mac/LightTrails-2.3-OFX-macOS.zip|Light Trails 2.3 for Apple Silicon (trail colour, Metal fixes)|no

@@ -1,11 +1,26 @@
 {
   "versions": [
     {
+      "version": "3.3",
+      "kind": "ofx",
+      "date": "2026-11-17",
+      "title": "Density, Blur, Focus, reticle on the footage",
+      "recommended": true,
+      "file": "versions/3.3/LightTrails-3.3-OFX-Windows.zip",
+      "where": "Color page > Effects > OpenFX > Light Trails",
+      "notes": [
+        "Density splits each trail into up to six intertwined wisps.",
+        "Blur softens the trail layer; Focus keeps trails sharp near the reticle and soft away from it.",
+        "Show Reticle draws the reticle into the picture so it is visible in any viewer (turn off before rendering).",
+        "With the new controls at 0, renders are identical to 3.2."
+      ]
+    },
+    {
       "version": "3.2",
       "kind": "ofx",
       "date": "2026-11-17",
       "title": "On-screen reticle for Toward Point and Angle",
-      "recommended": true,
+      "recommended": false,
       "file": "versions/3.2/LightTrails-3.2-OFX-Windows.zip",
       "where": "Color page > Effects > OpenFX > Light Trails",
       "notes": [
