@@ -1,11 +1,25 @@
 {
   "versions": [
     {
+      "version": "3.2",
+      "kind": "ofx",
+      "date": "2026-11-17",
+      "title": "On-screen reticle for Toward Point and Angle",
+      "recommended": true,
+      "file": "versions/3.2/LightTrails-3.2-OFX-Windows.zip",
+      "where": "Color page > Effects > OpenFX > Light Trails",
+      "notes": [
+        "Drag an orange reticle in the viewer: Toward Point sets the point, Angle aims the trails around a ring.",
+        "The Angle slider and the reticle stay in sync; the reticle is hidden for other directions.",
+        "Renders identically to 3.1."
+      ]
+    },
+    {
       "version": "3.1",
       "kind": "ofx",
       "date": "2026-11-17",
       "title": "Toward Center / Toward Point, Seed + Randomize",
-      "recommended": true,
+      "recommended": false,
       "file": "versions/3.1/LightTrails-3.1-OFX-Windows.zip",
       "where": "Color page > Effects > OpenFX > Light Trails",
       "notes": [
