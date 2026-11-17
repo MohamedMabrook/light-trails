@@ -104,7 +104,20 @@
   <h2 id="versions">Versions</h2>
 
   <div class="card rec">
-    <div class="top"><div><span class="ver">3.3</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Windows (NVIDIA) and Mac (Apple Silicon)</span></div>
+    <div class="top"><div><span class="ver">3.4</span><span class="tag">Recommended</span></div><span class="label">OpenFX · Windows (NVIDIA) and Mac (Apple Silicon)</span></div>
+    <ul>
+      <li><b>Point X / Point Y sliders</b> (percent of the frame) move the reticle from the Inspector. They work even if the viewer won't pass the mouse to the plugin, and the reticle on the footage follows as you drag.</li>
+      <li>In Resolve's <b>OpenFX Overlay</b> viewer mode, click anywhere to place the reticle.</li>
+      <li>The log now records what Resolve sends to the overlay, for troubleshooting.</li>
+      <li>Everything else is as in 3.3. A Point set in a 3.2 or 3.3 project opens at the frame centre.</li>
+    </ul>
+    <div class="row"><a class="btn ghost" href="versions/3.4/LightTrails-3.4-OFX-Windows.zip">Windows zip</a><a class="btn ghost" href="versions/3.4-mac/LightTrails-3.4-OFX-macOS.zip">Mac zip</a></div>
+    <div class="cmd"><pre id="c34">&amp; ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 3.4</pre><button data-copy="c34">Copy</button></div>
+    <div class="cmd" style="margin-top:8px"><pre id="c34m">curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install-mac.sh | bash -s -- 3.4-mac</pre><button data-copy="c34m">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <div class="top"><div><span class="ver">3.3</span><span class="tag">Backup</span></div><span class="label">OpenFX · Windows (NVIDIA) and Mac (Apple Silicon)</span></div>
     <ul>
       <li><b>Density</b> splits each trail into parallel wisps with their own waves, up to six intertwined strands.</li>
       <li><b>Blur</b> softens the trail layer only. <b>Focus</b> is depth of field for the trails: sharp near the reticle, soft further away, in any Direction.</li>
@@ -243,7 +256,8 @@
     <table>
       <thead><tr><th>Version</th><th>Page</th><th>Renders on</th><th>Still lamps trail</th><th>Frames per tweak</th><th>Quality menu</th><th>Depth</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td><b>3.3</b></td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (all but Follow Motion)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended: Density, Blur, Focus, reticle on footage</td></tr>
+        <tr><td><b>3.4</b></td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (all but Follow Motion)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Recommended: Point X/Y sliders</td></tr>
+        <tr><td>3.3</td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (all but Follow Motion)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Backup (branch backup-v3.3)</td></tr>
         <tr><td>3.2</td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (all but Follow Motion)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Backup (branch backup-v3.2)</td></tr>
         <tr><td>3.1</td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (all but Follow Motion)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Backup (branch backup-v3.1)</td></tr>
         <tr><td>3.0</td><td>Color, Edit</td><td>NVIDIA (CUDA) / Apple (Metal)</td><td class="yes">Yes</td><td>1 (Inward, Outward, Up, Angle)</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Backup (branch backup-v3.0)</td></tr>

@@ -1,11 +1,26 @@
 {
   "versions": [
     {
+      "version": "3.4",
+      "kind": "ofx",
+      "date": "2026-11-17",
+      "title": "Move the reticle with Point X / Y sliders",
+      "recommended": true,
+      "file": "versions/3.4/LightTrails-3.4-OFX-Windows.zip",
+      "where": "Color page > Effects > OpenFX > Light Trails",
+      "notes": [
+        "Point X / Point Y sliders (percent of frame) move the reticle without the viewer mouse.",
+        "In OpenFX Overlay mode, click anywhere to place the reticle.",
+        "Logs overlay events to diagnose viewers that ignore the mouse.",
+        "Everything else as 3.3."
+      ]
+    },
+    {
       "version": "3.3",
       "kind": "ofx",
       "date": "2026-11-17",
       "title": "Density, Blur, Focus, reticle on the footage",
-      "recommended": true,
+      "recommended": false,
       "file": "versions/3.3/LightTrails-3.3-OFX-Windows.zip",
       "where": "Color page > Effects > OpenFX > Light Trails",
       "notes": [

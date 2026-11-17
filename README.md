@@ -15,7 +15,7 @@ irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.p
 A specific version:
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 3.3
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/install.ps1))) -Version 3.4
 ```
 
 ### Mac (Apple Silicon, macOS 13+)
@@ -30,7 +30,8 @@ curl -fsSL https://raw.githubusercontent.com/MohamedMabrook/light-trails/main/in
 
 | Version | Kind | Still lamps trail | Frames read per tweak | Notes |
 |---|---|---|---|---|
-| **[3.3](versions/3.3/)** + **[3.3 Mac](versions/3.3-mac/)** (recommended) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | Density, Blur, Focus; reticle drawn on the footage |
+| **[3.4](versions/3.4/)** + **[3.4 Mac](versions/3.4-mac/)** (recommended) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | Point X/Y sliders move the reticle; click anywhere to place |
+| [3.3](versions/3.3/) + [3.3 Mac](versions/3.3-mac/) (backup, branch `backup-v3.3`) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | Density, Blur, Focus; reticle drawn on the footage |
 | [3.2](versions/3.2/) + [3.2 Mac](versions/3.2-mac/) (backup, branch `backup-v3.2`) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | On-screen reticle: drag to set Toward Point / aim Angle |
 | [3.1](versions/3.1/) + [3.1 Mac](versions/3.1-mac/) (backup, branch `backup-v3.1`) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | Toward Center / Toward Point, Seed + Randomize; Dissolve and Fringe removed |
 | [3.0](versions/3.0/) + [3.0 Mac](versions/3.0-mac/) (backup, branch `backup-v3.0`) | OpenFX, Windows CUDA and Mac Metal | Yes | 1 | Looks menu; Character: Variation, Flicker, Dissolve, Fringe (all off = 2.3) |
